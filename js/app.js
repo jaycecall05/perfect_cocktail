@@ -26,5 +26,6 @@ function getCocktails(e) {
         ui.printMessage('Please add something into the form', 'danger');
     } else {
         console.log('Query the REST API');
+
     }
 }

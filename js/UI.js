@@ -6,14 +6,19 @@ class UI {
 
         //add HTML
         div.innerHTML = `
-            <div class="alert alert-dismissilble alert-${className}">
+            <div class="alert alert-dismissible alert-${className}">
                 <button type="button" class="close" data-dismiss="alert">x</button>
                 ${message}
                 </div>
             `;
 
-            const reference = document.querySelector('.jumbotron h1');
-            const parentNode = reference.parentElement;
-            parentNode.insertBefore(div, reference);
+        const reference = document.querySelector('.jumbotron h1');
+        const parentNode = reference.parentElement;
+        parentNode.insertBefore(div, reference);
+
+        // remove after 4 seconds
+        setTimeout(() => {
+            document.querySelector('.alert').remove();
+        }, 4000);
     }
 }
