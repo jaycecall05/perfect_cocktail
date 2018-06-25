@@ -1,5 +1,5 @@
 // instanciate the class
-
+const ui = new UI();
 
 // create event listener
 function eventListeners() {
@@ -18,5 +18,13 @@ eventListeners();
 function getCocktails(e) {
     e.preventDefault();
 
-    console.log('click');
+    const searchTerm = document.querySelector('#search').value;
+
+    // check if something is in search input
+    if (searchTerm === '') {
+        // call user interface in message
+        ui.printMessage();
+    } else {
+        console.log('Query the REST API');
+    }
 }
