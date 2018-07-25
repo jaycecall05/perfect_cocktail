@@ -21,12 +21,14 @@ class UI {
                             <h2 class="card-title text-center">${drink.strDrink}</h2>
                             <p class="card-text font-weight-bold">Instructions: </p>
                             <p class="card-text">
-                            ${drink.strInstructions}
+                                ${drink.strInstructions}
                             </p>
                             <p class ="card-text">
                                 <ul class="list-group">    
                                     <li class="list-group-item alert
                                     alert-danger">Ingredients</li>
+                                    ${this.displayIngredients(drink)}
+
 
                                 <ul>
                             </p>
@@ -38,6 +40,8 @@ class UI {
                                 <span class="badge badge-pill badge-warning">
                                     Category: ${drink.strCategory}
                                 </span>
+                                
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -45,6 +49,31 @@ class UI {
 
             `;
         })
+    }
+
+    
+    //Prints ingredients and measurments
+    displayIngredients(drink) {
+        // console.log(drink);
+
+        let ingredients = [];
+        for(let i = 1; i < 16; i++) {
+            const ingredientMeasure = {};
+            if( drink[`strIngredient${i}`]   !== '') {
+                ingredientMeasure.ingredient = drink[`strIngredient${i}`];
+                ingredientMeasure.measure = drink[`strMeasure${i}`];
+                ingredients.push(ingredientMeasure);
+            }
+        }
+        // console.log(ingredients);
+        let ingredientsTemplate = '';
+        ingredients.forEach(ingredient => {
+            ingredientsTemplate += `
+                <li class="list-group-item">${ingredient.ingredient} - ${ingredient.measure}</li>
+            `;
+        });
+        return ingredientsTemplate
+
     }
     // show a custome message
     printMessage(message, className) {
