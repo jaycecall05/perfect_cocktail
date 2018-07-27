@@ -1,5 +1,25 @@
 class UI {
 
+    displayDrinks(drinks) {
+        const resultsWrapper = document.querySelector('.results-wrapper');
+        resultsWrapper.style.display = 'block';
+
+        const resultsDiv = document.querySelector('#results');
+
+        drinks.forEach(drink => {
+            resultsDiv.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card my-3">
+                        <img class="card-img-top" src="http://${drink.strDrinkThumb}" alt="${drink.strDrink}">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">${drink.strDrink}</h2>
+                            <a class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
 
 
     displayDrinksWithIngredients(drinks) {
@@ -95,5 +115,9 @@ class UI {
         setTimeout(() => {
             document.querySelector('.alert').remove();
         }, 4000);
+    }
+    clearResults() {
+        const resultsDiv = document.querySelector('#results');
+        resultsDiv.innerHTML = '';
     }
 }
